@@ -1,0 +1,12 @@
+
+# Hide the info for database connection
+config.js
+
+
+package-lock.json
+
+license
+
+node_modules/
+
+dist/

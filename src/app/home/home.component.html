@@ -1,0 +1,19 @@
+﻿<h1>Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in with Angular 8 and you are able to delete your own account !</p>
+<h3>All registered users:</h3>
+<ul>
+    <li *ngFor="let user of users">
+                       
+        <div *ngIf="user.id === currentUser.id">
+
+             {{user.email}} - {{user.firstName}} {{user.lastName}} 
+             - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+
+       </div>
+       <div *ngIf="user.id != currentUser.id">
+
+            {{user.email}} - {{user.firstName}} {{user.lastName}} 
+
+       </div>
+    </li>
+</ul>

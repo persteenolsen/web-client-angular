@@ -1,0 +1,46 @@
+
+<h3 class="p-3 text-center">The results of Web API GET requests from a DB</h3>
+
+<br />
+
+Total @angular packages: <b>{{totalAngularPackages}}</b> at the "api.npms.io" Web API   
+    
+ <br /><br />
+
+
+<div class="table-responsive">
+	
+	
+	 <div *ngIf="errorMessage != null">
+	      <div style='color: red'>{{errorMessage}}</div>
+	 </div>
+	 <div *ngIf="errorMessage == null">
+	 
+	    <table id="myTable" class="table table-striped">
+             <thead>
+                <tr>
+                   <th style="width: '10%'">Id</th>
+				   
+		    	   <th style="width: '70%'">Title</th>
+				   
+				   <th style="width: '70%'">Body</th>
+                </tr>
+             </thead>
+             <tbody>
+		   
+		      <tr *ngFor="let post of listOfPosts">
+		          <td>{{post.id}}</td>
+				  
+                  <td>{{post.title}}</td>
+				  
+				  <td>{{post.body}}</td>
+				   
+		       </tr>
+		    </tbody>
+		 
+	     </table>
+	  </div>
+    
+</div>
+
+            			 
