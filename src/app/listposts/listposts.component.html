@@ -9,7 +9,9 @@ Total @angular packages: <b>{{totalAngularPackages}}</b> at the "api.npms.io" We
 
 
 <div class="table-responsive">
-	
+	 
+	 <a routerLink="/createpost">Create a new Post</a>
+	 <br /> <br />
 	
 	 <div *ngIf="errorMessage != null">
 	      <div style='color: red'>{{errorMessage}}</div>
@@ -30,6 +32,7 @@ Total @angular packages: <b>{{totalAngularPackages}}</b> at the "api.npms.io" We
 		   
 		      <tr *ngFor="let post of listOfPosts">
 		          <td>{{post.id}}</td>
+				  <td><button type=button class="btn btn-danger" (click)="deletePost(post.id)" >Delete</button></td>
 				  
                   <td>{{post.title}}</td>
 				  

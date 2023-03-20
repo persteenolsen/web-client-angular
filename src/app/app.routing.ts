@@ -3,8 +3,9 @@
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
-
 import { ListpostsComponent } from './listposts';
+
+import { CreatePostComponent } from './createpost';
 
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -17,8 +18,8 @@ const routes: Routes = [
     { path: '', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-	{  path: 'listposts', component: ListpostsComponent },
-   
+	{ path: 'listposts', component: ListpostsComponent },
+    { path: 'createpost', component: CreatePostComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

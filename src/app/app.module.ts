@@ -18,6 +18,10 @@ import { AlertComponent } from './_components';
 
 import { ListpostsComponent } from './listposts';
 
+
+import { CreatePostComponent } from './createpost';
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -30,6 +34,7 @@ import { ListpostsComponent } from './listposts';
         HomeComponent,
         AboutComponent,
 		ListpostsComponent,
+		CreatePostComponent,
         LoginComponent,
         RegisterComponent,
         AlertComponent
