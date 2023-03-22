@@ -17,10 +17,12 @@ import { AlertComponent } from './_components';
 
 
 import { ListpostsComponent } from './listposts';
-
-
 import { CreatePostComponent } from './createpost';
 
+import { EditPostComponent } from './editpost';
+
+
+import { SelectedPostComponent } from './selectedpost';
 
 @NgModule({
     imports: [
@@ -35,6 +37,8 @@ import { CreatePostComponent } from './createpost';
         AboutComponent,
 		ListpostsComponent,
 		CreatePostComponent,
+		EditPostComponent,
+		SelectedPostComponent,
         LoginComponent,
         RegisterComponent,
         AlertComponent

@@ -22,10 +22,11 @@ Total @angular packages: <b>{{totalAngularPackages}}</b> at the "api.npms.io" We
              <thead>
                 <tr>
                    <th style="width: '10%'">Id</th>
+				   <th style="width: '10%'"></th>
 				   
-		    	   <th style="width: '70%'">Title</th>
+		    	   <th style="width: '40%'">Title ( GET )</th>
 				   
-				   <th style="width: '70%'">Body</th>
+				   <th style="width: '40%'">Body ( PUT )</th>
                 </tr>
              </thead>
              <tbody>
@@ -34,9 +35,9 @@ Total @angular packages: <b>{{totalAngularPackages}}</b> at the "api.npms.io" We
 		          <td>{{post.id}}</td>
 				  <td><button type=button class="btn btn-danger" (click)="deletePost(post.id)" >Delete</button></td>
 				  
-                  <td>{{post.title}}</td>
-				  
-				  <td>{{post.body}}</td>
+			      <td><a routerLink="/thepost/{{post.id}}">{{post.title}}</a></td>
+				  <td><a routerLink="/editpost/{{post.id}}">{{post.body}}</a></td>
+				 
 				   
 		       </tr>
 		    </tbody>

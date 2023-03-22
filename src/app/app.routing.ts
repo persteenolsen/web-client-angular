@@ -4,8 +4,10 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
 import { ListpostsComponent } from './listposts';
-
 import { CreatePostComponent } from './createpost';
+import { SelectedPostComponent } from './selectedpost';
+
+import { EditPostComponent } from './editpost';
 
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -19,6 +21,9 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
 	{ path: 'listposts', component: ListpostsComponent },
+	
+	{ path: 'editpost/:id', component: EditPostComponent },
+	{ path: 'thepost/:id', component: SelectedPostComponent },
     { path: 'createpost', component: CreatePostComponent },
 
     // otherwise redirect to home
