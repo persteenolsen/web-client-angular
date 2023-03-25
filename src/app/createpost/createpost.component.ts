@@ -44,7 +44,7 @@ export class CreatePostComponent implements OnInit {
 		    const body = { title: this.registerForm.get('title').value, body: this.registerForm.get('body').value };
            //  this.http.post<CreateResult>('https://jsonplaceholder.typicode.com/posts/', body )
 		    this.http.post<CreateResult>('https://users.api.core.persteenolsen.com/posts/', body )
-		  // this.http.post<CreateResult>('http://localhost:4000/posts/', body )
+		   // this.http.post<CreateResult>('http://localhost:4000/posts/', body )
            .subscribe({
            
 		    next: data => {

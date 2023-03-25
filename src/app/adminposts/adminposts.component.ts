@@ -4,13 +4,13 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-    selector: 'listposts-page',
-    templateUrl: './listposts.component.html'
+    selector: 'adminposts-page',
+    templateUrl: './adminposts.component.html'
 })
 
-export class ListpostsComponent implements OnInit {
+export class AdminPostsComponent implements OnInit {
 
-    totalAngularPackages: any;
+   
 	listOfPosts: any;
 	errorMessage: any;
 	
@@ -19,12 +19,7 @@ export class ListpostsComponent implements OnInit {
     
     ngOnInit(): void {
 
-        // Just for testing towards an third part API			    
-		// Get Request for the total number of Angular packages at api.nmps.io
-        this.http.get<NPMSearchResult>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
-        this.totalAngularPackages = data.total;
-        })
-	  		
+       	  		
 	    // Method call for displaying the updatd List of Posts after one was deleted
 		this.displayPosts();
 		
@@ -58,9 +53,8 @@ export class ListpostsComponent implements OnInit {
 	deletePost(id: number) {
 	  
 	     if( confirm( "Are you sure to delete the Post width Id: " + id ) ) {
-	  
-	       // this.http.delete('https://jsonplaceholder.typicode.com/invalid-url/' + id )
-		  this.http.delete('https://users.api.core.persteenolsen.com/posts/' + id )
+	  	      
+		   this.http.delete('https://users.api.core.persteenolsen.com/posts/' + id )
 		  // this.http.delete('http://localhost:4000/posts/' + id )
            .subscribe({
 		   
@@ -86,11 +80,6 @@ export class ListpostsComponent implements OnInit {
     }
 }
 
-// The interface matching the result from api.nmps.io Web API
-interface NPMSearchResult {
-    total: number;
-    results: Array<object>;
-}
 
 // The interface matching the result from jsonplaceholder Web API
 interface PostSearchResult {

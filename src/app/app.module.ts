@@ -16,12 +16,12 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 
 
-import { ListpostsComponent } from './listposts';
+import { AdminPostsComponent } from './adminposts';
 import { CreatePostComponent } from './createpost';
 
 import { EditPostComponent } from './editpost';
 
-
+import { ShowPostsComponent } from './showposts';
 import { SelectedPostComponent } from './selectedpost';
 
 @NgModule({
@@ -35,7 +35,8 @@ import { SelectedPostComponent } from './selectedpost';
         AppComponent,
         HomeComponent,
         AboutComponent,
-		ListpostsComponent,
+		AdminPostsComponent,
+		ShowPostsComponent,
 		CreatePostComponent,
 		EditPostComponent,
 		SelectedPostComponent,
