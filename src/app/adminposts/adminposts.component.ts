@@ -3,6 +3,9 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
+
+import { AlertService } from '@/_services';
+
 @Component({
     selector: 'adminposts-page',
     templateUrl: './adminposts.component.html'
@@ -15,7 +18,7 @@ export class AdminPostsComponent implements OnInit {
 	errorMessage: any;
 	
     // The Constructor	
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private alertService: AlertService) { }
     
     ngOnInit(): void {
 
@@ -56,6 +59,9 @@ export class AdminPostsComponent implements OnInit {
 	deletePost(id: number) {
 	  
 	     if( confirm( "Are you sure to delete the Post width Id: " + id ) ) {
+		 
+		 // reset alerts on delete
+          this.alertService.clear();
 	  	      
 		  // this.http.delete('https://users.api.core.persteenolsen.com/posts/' + id )
 		  // this.http.delete('http://localhost:4000/posts/' + id )
@@ -67,7 +73,10 @@ export class AdminPostsComponent implements OnInit {
 		   
                next: data => {
 			
-                   alert('The Post was deleted successfully!');
+                   //alert('The Post was deleted successfully!');
+				   
+				   // Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
+				   this.alertService.success('The Post was deleted successfully ! ', false);
                    
 				   // Method call for displaying the updatd List of Posts after one was deleted
 			       this.displayPosts();
@@ -77,8 +86,9 @@ export class AdminPostsComponent implements OnInit {
 							
                  },
             error: error => {
-                this.errorMessage = error.message;
-                console.error('There was an error!', error);
+              
+			    console.error( 'There was an error trying to delete the Post ! ', error);
+				this.alertService.error( 'There was an error trying to delete the Post or no connection to the API: ' + error );
             }
         });
 	  
