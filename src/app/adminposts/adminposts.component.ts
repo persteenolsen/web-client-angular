@@ -33,8 +33,11 @@ export class AdminPostsComponent implements OnInit {
 		// this.http.get<PostSearchResult>('http://localhost:4000/posts').subscribe({ 
 		
 		// Test agains a .net core 2.2 backend on a traditional webserver
-		this.http.get<PostSearchResult>('https://users.api.core.persteenolsen.com/posts').subscribe({ 
-	
+		// this.http.get<PostSearchResult>('https://users.api.core.persteenolsen.com/posts').subscribe({ 
+		
+		// Taking the apiUrl from webpack
+		this.http.get<PostSearchResult>(`${config.apiUrl}` + '/posts' ).subscribe({ 
+			
 		    next: data => {
                 this.listOfPosts = data;
             },
@@ -54,8 +57,12 @@ export class AdminPostsComponent implements OnInit {
 	  
 	     if( confirm( "Are you sure to delete the Post width Id: " + id ) ) {
 	  	      
-		   this.http.delete('https://users.api.core.persteenolsen.com/posts/' + id )
+		  // this.http.delete('https://users.api.core.persteenolsen.com/posts/' + id )
 		  // this.http.delete('http://localhost:4000/posts/' + id )
+		  
+		  // Taking the apiUrl from webpack
+		   this.http.delete( `${config.apiUrl}` + '/posts/' + id )
+		  
            .subscribe({
 		   
                next: data => {

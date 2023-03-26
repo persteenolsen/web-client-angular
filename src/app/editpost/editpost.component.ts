@@ -45,11 +45,13 @@ export class EditPostComponent implements OnInit {
 		        );
 		 			
 		    const body = { title: this.registerForm.get('title').value, body: this.registerForm.get('body').value };
-           
-		   //this.http.put<EditResult>('https://jsonplaceholder.typicode.com/posts/' + this.registerForm.get('idpost').value, body )
+           		   
 		   //this.http.put<EditResult>('http://localhost:4000/posts/' + this.registerForm.get('idpost').value, body )
-		    this.http.put<EditResult>(' https://users.api.core.persteenolsen.com/posts/' + this.registerForm.get('idpost').value, body )
+		   // this.http.put<EditResult>('https://users.api.core.persteenolsen.com/posts/' + this.registerForm.get('idpost').value, body )
 		   
+		   // Taking the apiUrl from webpack
+		    this.http.put<EditResult>( `${config.apiUrl}` + '/posts/' + this.registerForm.get('idpost').value, body )
+		   			
            .subscribe({
            
 		   next: data => {

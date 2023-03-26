@@ -23,6 +23,8 @@ export class ShowPostsComponent implements OnInit {
 	    // Method call for displaying the updatd List of Posts after one was deleted
 		this.displayPosts();
 		
+		//alert( 'ApiUrl from Webpack: ' + `${config.apiUrl}` + '/posts');
+		
 	   
     }
       
@@ -34,8 +36,11 @@ export class ShowPostsComponent implements OnInit {
 		// this.http.get<PostSearchResult>('http://localhost:4000/posts').subscribe({ 
 		
 		// Test agains a .net core 2.2 backend on a traditional webserver
-		this.http.get<PostSearchResult>('https://users.api.core.persteenolsen.com/posts').subscribe({ 
-	
+		//this.http.get<PostSearchResult>('https://users.api.core.persteenolsen.com/posts').subscribe({ 
+		
+		// Taking the apiUrl from webpack
+		this.http.get<PostSearchResult>(`${config.apiUrl}` + '/posts').subscribe({ 
+	    
 		    next: data => {
                 this.listOfPosts = data;
             },

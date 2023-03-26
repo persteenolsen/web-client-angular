@@ -28,10 +28,13 @@ export class SelectedPostComponent implements OnInit {
 			    
 		// Get Request for a selected post by id from the jsonplaceholder
 		// Note: With Error handling: If there is an error like wrong url - an error message will be displayed
-	    // this.http.get<SearchResults>('https://jsonplaceholder.typicode.com/posts/1').subscribe({
-	    // this.http.get<SearchResults>('https://jsonplaceholder.typicode.com/posts/' + this.idParam ).subscribe({
-		//  this.http.get<SearchResults>('http://localhost:4000/posts/' + this.idParam ).subscribe({
-		  this.http.get<SearchResults>('https://users.api.core.persteenolsen.com/posts/' + this.idParam ).subscribe({
+	    //  this.http.get<SearchResults>('http://localhost:4000/posts/' + this.idParam ).subscribe({
+		//  this.http.get<SearchResults>('https://users.api.core.persteenolsen.com/posts/' + this.idParam ).subscribe({
+		
+		// Taking the apiUrl from webpack
+		this.http.get<SearchResults>( `${config.apiUrl}` + '/posts/' + this.idParam ).subscribe({
+		
+		  
 				  
 		    next: data => {
                 this.idPost = data.id;
