@@ -1,7 +1,12 @@
 //import 'whatwg-fetch';
 
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+
+import { first } from 'rxjs/operators';
+
+import { Post } from '@/_models';
+import { PostService } from '@/_services';
+
 
 @Component({
     selector: 'showposts-page',
@@ -9,13 +14,12 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class ShowPostsComponent implements OnInit {
-
    
 	listOfPosts: any;
 	errorMessage: any;
 	
     // The Constructor	
-    constructor(private http: HttpClient) { }
+    constructor( private postService: PostService) { }
     
     ngOnInit(): void {
 
@@ -31,15 +35,9 @@ export class ShowPostsComponent implements OnInit {
 	  
 	displayPosts (){
        
-        
-		// Testing against a .net core 2.2 backend - localhost
-		// this.http.get<PostSearchResult>('http://localhost:4000/posts').subscribe({ 
-		
-		// Test agains a .net core 2.2 backend on a traditional webserver
-		//this.http.get<PostSearchResult>('https://users.api.core.persteenolsen.com/posts').subscribe({ 
-		
+        		
 		// Taking the apiUrl from webpack
-		this.http.get<PostSearchResult>(`${config.apiUrl}` + '/posts').subscribe({ 
+		this.postService.getAll().subscribe({ 
 	    
 		    next: data => {
                 this.listOfPosts = data;
@@ -52,14 +50,4 @@ export class ShowPostsComponent implements OnInit {
 
     }
 
-}
-
-
-// The interface matching the result from jsonplaceholder Web API
-interface PostSearchResult {
-   
-	id: any;
-    title: any;
-	body: any;
- 
 }

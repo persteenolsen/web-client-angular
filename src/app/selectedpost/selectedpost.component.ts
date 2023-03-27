@@ -1,9 +1,11 @@
 //import 'whatwg-fetch';
 
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 
 import { ActivatedRoute, Router } from "@angular/router";
+
+import { PostService } from '@/_services';
 
 @Component({
     selector: 'selectedpost-page',
@@ -19,7 +21,7 @@ export class SelectedPostComponent implements OnInit {
 	idParam: any;
 	errorMessage: any;	
 			
-    constructor( private http: HttpClient,  private readonly route: ActivatedRoute ) { }
+    constructor( private postService: PostService,  private readonly route: ActivatedRoute ) { }
 
     ngOnInit() {  
 	    
@@ -32,10 +34,9 @@ export class SelectedPostComponent implements OnInit {
 		//  this.http.get<SearchResults>('https://users.api.core.persteenolsen.com/posts/' + this.idParam ).subscribe({
 		
 		// Taking the apiUrl from webpack
-		this.http.get<SearchResults>( `${config.apiUrl}` + '/posts/' + this.idParam ).subscribe({
-		
-		  
-				  
+		//this.http.get<SearchResults>( `${config.apiUrl}` + '/posts/' + this.idParam ).subscribe({
+			this.postService.getPost( this.idParam ).subscribe({
+		      
 		    next: data => {
                 this.idPost = data.id;
 				this.titlePost = data.title;
@@ -50,11 +51,3 @@ export class SelectedPostComponent implements OnInit {
     }
 }
 
-
-// The interface matching the result from jsonplaceholder Web API
-interface SearchResults {
-   
-	id: any;
-    title: any;
-	body: any;
-}

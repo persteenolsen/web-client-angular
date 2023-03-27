@@ -1,7 +1,12 @@
 //import 'whatwg-fetch';
 
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
+
+import { first } from 'rxjs/operators';
+
+import { Post } from '@/_models';
+import { PostService } from '@/_services';
 
 
 import { AlertService } from '@/_services';
@@ -18,7 +23,7 @@ export class AdminPostsComponent implements OnInit {
 	errorMessage: any;
 	
     // The Constructor	
-    constructor(private http: HttpClient, private alertService: AlertService) { }
+    constructor( private postService: PostService, private alertService: AlertService) { }
     
     ngOnInit(): void {
 
@@ -31,15 +36,7 @@ export class AdminPostsComponent implements OnInit {
        
 	displayPosts (){
        
-        
-		// Testing against a .net core 2.2 backend - localhost
-		// this.http.get<PostSearchResult>('http://localhost:4000/posts').subscribe({ 
-		
-		// Test agains a .net core 2.2 backend on a traditional webserver
-		// this.http.get<PostSearchResult>('https://users.api.core.persteenolsen.com/posts').subscribe({ 
-		
-		// Taking the apiUrl from webpack
-		this.http.get<PostSearchResult>(`${config.apiUrl}` + '/posts' ).subscribe({ 
+          this.postService.getAll().subscribe({ 
 			
 		    next: data => {
                 this.listOfPosts = data;
@@ -61,15 +58,11 @@ export class AdminPostsComponent implements OnInit {
 	     if( confirm( "Are you sure to delete the Post width Id: " + id ) ) {
 		 
 		 // reset alerts on delete
-          this.alertService.clear();
-	  	      
-		  // this.http.delete('https://users.api.core.persteenolsen.com/posts/' + id )
-		  // this.http.delete('http://localhost:4000/posts/' + id )
+         this.alertService.clear();
+	  	
 		  
 		  // Taking the apiUrl from webpack
-		   this.http.delete( `${config.apiUrl}` + '/posts/' + id )
-		  
-           .subscribe({
+		  this.postService.delete( id ).subscribe({
 		   
                next: data => {
 			
@@ -95,14 +88,4 @@ export class AdminPostsComponent implements OnInit {
 	  }
        
     }
-}
-
-
-// The interface matching the result from jsonplaceholder Web API
-interface PostSearchResult {
-   
-	id: any;
-    title: any;
-	body: any;
- 
 }

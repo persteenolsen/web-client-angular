@@ -1,13 +1,14 @@
 //import 'whatwg-fetch';
 
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { AlertService } from '@/_services';
+import { PostService, AlertService } from '@/_services';
 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { first } from "rxjs/operators";
 
 @Component({
     selector: 'editpost-page',
@@ -25,7 +26,7 @@ export class EditPostComponent implements OnInit {
 	errorMessage: any;	
 	
     // Constructor	
-    constructor( private http: HttpClient, private readonly route: ActivatedRoute, private formBuilder: FormBuilder, private alertService: AlertService ) { }
+    constructor( private postService: PostService, private readonly route: ActivatedRoute, private formBuilder: FormBuilder, private alertService: AlertService ) { }
     
 	// Convenience getter for easy access to form fields in the template and here
     get f() { return this.registerForm.controls; }
@@ -45,21 +46,21 @@ export class EditPostComponent implements OnInit {
 		  // this.loading = true;
 			
            // alert( 'Form values you entered:\n\n' + JSON.stringify( this.registerForm.value ));
-		   /*alert( 'Form values you submitted:\n\nId:\n' + 
+		  /* alert( 'Form values you submitted:\n\nId:\n' + 
 		           this.registerForm.get('idpost').value + '\n\nTitle:\n' + 
 		           this.registerForm.get('title').value + '\n\nBody:\n' + 
 		           this.registerForm.get('body').value  
 		        ); */
 		 			
-		    const body = { title: this.registerForm.get('title').value, body: this.registerForm.get('body').value };
+		    const b = { title: this.registerForm.get('title').value, body: this.registerForm.get('body').value };
            		   
 		   //this.http.put<EditResult>('http://localhost:4000/posts/' + this.registerForm.get('idpost').value, body )
 		   // this.http.put<EditResult>('https://users.api.core.persteenolsen.com/posts/' + this.registerForm.get('idpost').value, body )
 		   
 		   // Taking the apiUrl from webpack
-		    this.http.put<EditResult>( `${config.apiUrl}` + '/posts/' + this.registerForm.get('idpost').value, body )
-		   			
-           .subscribe({
+		   // this.http.put<EditResult>( `${config.apiUrl}` + '/posts/' + this.registerForm.get('idpost').value, body )
+		   this.postService.edit(this.registerForm.get('idpost').value, b)
+		   .subscribe({
            
 		   next: data => {
 		        
@@ -67,8 +68,9 @@ export class EditPostComponent implements OnInit {
                 this.postId = data.id;
 				
 				//alert( 'Form values returned from the Web API:\n\nId:\n' + data.id + '\n\nTitle:\n' + data.title + '\n\nBody:\n' + data.body );
-				
-				 // Setting the GUI with the value returned from the Web API
+				                
+				// Note: <SearchResults> needs to be defined and returned in PostService
+				// Setting the GUI with the value returned from the Web API
 		        this.f.idpost.setValue( data.id );
 		        this.f.title.setValue( 'Title from Web API: ' + data.title );
                 this.f.body.setValue( 'Body from Web API: ' + data.body ); 
@@ -114,8 +116,8 @@ export class EditPostComponent implements OnInit {
 	    // this.http.get<SearchResult>('http://localhost:4000/posts/' + this.idParam ).subscribe({
 		// this.http.get<SearchResult>('https://users.api.core.persteenolsen.com/posts/' + this.idParam ).subscribe({
 		
-		this.http.get<SearchResult>( `${config.apiUrl}` + '/posts/' + this.idParam ).subscribe({
-		
+		//this.http.get<SearchResult>( `${config.apiUrl}` + '/posts/' + this.idParam ).subscribe({
+		this.postService.getPost( this.idParam ).subscribe({
 		
 		    next: data => {
 			
