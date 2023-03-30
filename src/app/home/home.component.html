@@ -8,6 +8,7 @@
 
              {{user.email}} - {{user.firstName}} {{user.lastName}} 
              - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+			 - <a routerLink="/edituser/{{user.id}}">Edit</a>
 
        </div>
        <div *ngIf="user.id != currentUser.id">

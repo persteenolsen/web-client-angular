@@ -11,7 +11,7 @@
 
         <div class="navbar-nav">
 
-          <a class="nav-item nav-link" routerLink="/home">Home</a>
+          <a class="nav-item nav-link" routerLink="/home">Profile</a>
 		  <a class="nav-item nav-link" routerLink="/adminposts">Administrate the Posts</a>
 		  
           <a class="nav-item nav-link" (click)="logout()">Logout</a>
@@ -46,7 +46,7 @@
 
  <!--If the current user is logged in display the name of the user-->
  <div class="user-text" *ngIf="currentUser">You are logged in as:
-    <span class="user-name">  {{ currentUser.firstName }} {{ currentUser.lastName }} </span>
+    <span class="user-name">  {{currentUser.firstName}} </span>
 </div>
 
 

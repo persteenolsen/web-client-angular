@@ -10,6 +10,7 @@ import { CreatePostComponent } from './createpost';
 import { SelectedPostComponent } from './selectedpost';
 
 import { EditPostComponent } from './editpost';
+import { EditUserComponent } from './edituser';
 
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -17,8 +18,9 @@ import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+	{ path: 'edituser/:id', component: EditUserComponent, canActivate: [AuthGuard] },
     { path: 'adminposts', component: AdminPostsComponent, canActivate: [AuthGuard] },
-     
+	     
     { path: '', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },

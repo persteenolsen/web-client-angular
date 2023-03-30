@@ -60,7 +60,7 @@ export class AdminPostsComponent implements OnInit {
                 next: data => {
 
                     // Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
-                    this.alertService.success('The Post was deleted successfully ! ', false);
+                    this.alertService.success('The Post was deleted successfully! ', false);
 
                     // Method call for displaying the updatd List of Posts after one was deleted
                     this.displayPosts();

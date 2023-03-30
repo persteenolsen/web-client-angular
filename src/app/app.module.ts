@@ -20,6 +20,7 @@ import { AdminPostsComponent } from './adminposts';
 import { CreatePostComponent } from './createpost';
 
 import { EditPostComponent } from './editpost';
+import { EditUserComponent } from './edituser';
 
 import { ShowPostsComponent } from './showposts';
 import { SelectedPostComponent } from './selectedpost';
@@ -34,13 +35,14 @@ import { SelectedPostComponent } from './selectedpost';
     declarations: [
         AppComponent,
         HomeComponent,
+		EditUserComponent,
         AboutComponent,
 		AdminPostsComponent,
 		ShowPostsComponent,
 		CreatePostComponent,
 		EditPostComponent,
 		SelectedPostComponent,
-        LoginComponent,
+		LoginComponent,
         RegisterComponent,
         AlertComponent
     ],
