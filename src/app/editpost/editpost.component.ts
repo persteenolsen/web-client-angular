@@ -53,11 +53,12 @@ export class EditPostComponent implements OnInit {
 					// Not really needed :-)
 					this.postId = data.id;
 
-					// Note: <SearchResults> needs to be defined and returned in PostService
+					// Note: An Interface <apiResult> needs to be defined in PostService matching the Post Model at the Web API - without first catital 
+					// letters of the Post Model properties
 					// Setting the GUI with the value returned from the Web API
 					this.f.idpost.setValue(data.id);
-					this.f.title.setValue('Title from Web API: ' + data.title);
-					this.f.body.setValue('Body from Web API: ' + data.body);
+					this.f.title.setValue(data.title);
+					this.f.body.setValue(data.body);
 
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 					this.alertService.success('The Post was edited successfully ! ', false);
@@ -122,20 +123,3 @@ export class EditPostComponent implements OnInit {
 	}
 }
 
-
-// The interface matching the result from jsonplaceholder Web API
-interface SearchResult {
-
-	id: any;
-	title: any;
-	body: any;
-}
-
-
-// The interface matching the result from jsonplaceholder Web API
-interface EditResult {
-
-	id: any;
-	title: any;
-	body: any;
-}

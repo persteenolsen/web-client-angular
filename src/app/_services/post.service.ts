@@ -15,17 +15,17 @@ export class PostService {
 
 
     getPost(id: number) {
-        return this.http.get<SearchResults>(`${config.apiUrl}/posts/${id}`);
+        return this.http.get<apiResult>(`${config.apiUrl}/posts/${id}`);
     }
 
     create(title: any, body: any) {
         var thepost = { title, body };
-        return this.http.post<SearchResults>(`${config.apiUrl}/posts/`, thepost);
+        return this.http.post<apiResult>(`${config.apiUrl}/posts/`, thepost);
     }
 
     edit(id: number, p: any) {
 
-        return this.http.put<SearchResults>(`${config.apiUrl}/posts/${id}`, p);
+        return this.http.put<apiResult>(`${config.apiUrl}/posts/${id}`, p);
     }
 
     delete(id: number) {
@@ -36,8 +36,8 @@ export class PostService {
 }
 
 
-// The interface matching the result from jsonplaceholder Web API
-interface SearchResults {
+// The interface matching the result from the model of the Web API but with no catital first letter of the moel properties 
+interface apiResult {
 
     id: any;
     title: any;

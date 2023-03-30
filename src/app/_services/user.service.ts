@@ -9,6 +9,7 @@ import { User } from '@/_models';
 @Injectable({ providedIn: 'root' })
 export class UserService {
     
+	// For internal notifications between components
 	private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
@@ -37,11 +38,12 @@ export class UserService {
     }
 	
 	edit(id: number, p: any) {
-        
-	   // Note: It is not totally correct to set the user (client-side) before changing the User at the DB!
-	   // store user details and jwt token in local storage to keep user logged in between page refreshes
-       localStorage.setItem('currentUser', JSON.stringify(p));
-       this.currentUserSubject.next(p);
+       
+	   // NOTE: When using the lines belows and saving changes to this method ( EDIT USER ) in dev-mode there will be a LOGOUT !
+	   // It is not totally corect to set the user (client-side) before changing the User at the DB!
+	   // store user details and jwt token in local storage to keep user logged in between page refreshes !!
+        localStorage.setItem('currentUser', JSON.stringify(p));
+        this.currentUserSubject.next(p);
 	   
 	   return this.http.put<apiResult>(`${config.apiUrl}/users/${id}`, p)
 		
@@ -54,7 +56,7 @@ export class UserService {
 
 
 // The interface matching the result from the Web API
-// Note: Remember that the returned values will never start with a capital letter like the User Model at the Web API
+// Note: Remember that the returned values will never start with a capital letter like the User Model at the Web API !
 interface apiResult {
 
     id: any;

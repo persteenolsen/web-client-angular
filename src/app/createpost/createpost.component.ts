@@ -48,11 +48,12 @@ export class CreatePostComponent implements OnInit {
 
 			next: data => {
 
-				// Note: <SearchResults> needs to be defined and returned in PostService
+				// Note: An Interface <apiResult> needs to be defined in PostService matching the Post Model at the Web API - without first catital 
+				// letters of the Post Model properties
 				// Setting the GUI with the value returned from the Web API
 				this.f.idpost.setValue(data.id);
-				this.f.title.setValue('Title created successfully: ' + data.title);
-				this.f.body.setValue('Body created successfully: ' + data.body);
+				this.f.title.setValue(data.title);
+				this.f.body.setValue(data.body);
 
 				// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 				this.alertService.success('The Post was created successfully ! ', false);
