@@ -58,6 +58,7 @@ export class EditUserComponent implements OnInit {
                   
 				// Note: Only status 200 is returned
 				// Setting the GUI with the value returned from the Web API
+				// Id is not returned from the Web API which is fine :-)
 				//	this.f.iduser.setValue(data.id);
 				//	this.f.email.setValue('Email from Web API: ' + data.email);
 				//  this.f.password.setValue('Password from Web API: ' + data.Password);
@@ -66,9 +67,11 @@ export class EditUserComponent implements OnInit {
 				//	this.f.lastname.setValue('Lastname Web API: ' + data.lastName);
 				//	this.f.lastname.setValue('Role from Web API: ' + data.role);
 
-
+                    var apiResponse = "Title: " + data.title + " Firstname: " + data.firstName + " LastName: " + data.lastName + 
+					" Email: " + data.email + " Role: " + data.role;
+				 
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
-					this.alertService.success('The User was edited successfully ! ', false);
+					this.alertService.success('The User was updated successfully with these values: ' + apiResponse, false);
 
 
 				},
