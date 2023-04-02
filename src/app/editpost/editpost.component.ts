@@ -59,7 +59,8 @@ export class EditPostComponent implements OnInit {
 					this.f.idpost.setValue(data.id);
 					this.f.title.setValue(data.title);
 					this.f.body.setValue(data.body);
-
+                    
+					
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 					this.alertService.success('The Post was edited successfully ! ', false);
 
