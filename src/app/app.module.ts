@@ -16,6 +16,8 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 
 
+import { AdminUsersComponent } from './adminusers';
+
 import { AdminPostsComponent } from './adminposts';
 import { CreatePostComponent } from './createpost';
 
@@ -37,6 +39,7 @@ import { SelectedPostComponent } from './selectedpost';
         HomeComponent,
 		EditUserComponent,
         AboutComponent,
+		AdminUsersComponent,
 		AdminPostsComponent,
 		ShowPostsComponent,
 		CreatePostComponent,

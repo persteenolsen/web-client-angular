@@ -70,6 +70,7 @@ export class EditUserComponent implements OnInit {
                     var apiResponse = "Title: " + data.title + " Firstname: " + data.firstName + " LastName: " + data.lastName + 
 					" Email: " + data.email + " Role: " + data.role;
 				 
+				 				 
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 					this.alertService.success('The User was updated successfully with these values: ' + apiResponse, false);
 

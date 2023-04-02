@@ -1,0 +1,24 @@
+﻿
+    <div *ngFor="let user of users">
+                       
+        <div *ngIf="user.id === currentUser.id">
+             <h1>Hi {{user.firstName}} - {{user.role}}</h1> 
+             
+       </div>
+      
+    </div>
+
+
+<p>As an administrator you are able to edit an delete all the Users !</p>
+<h3>All registered users:</h3>
+<ul>
+    <li *ngFor="let user of users">
+                   
+                    
+             {{user.email}} - {{user.firstName}} {{user.lastName}} 
+             - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+			 - <a routerLink="/edituser/{{user.id}}">Edit</a>
+
+              
+    </li>
+</ul>
