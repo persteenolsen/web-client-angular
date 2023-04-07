@@ -74,7 +74,8 @@ export class EditUserComponent implements OnInit {
 					this.alertService.success('The User was updated successfully with these values: ' + apiResponse, false);
 					
 					// Note: Updating the name and role of the User logged in - located at the right corner
-					document.getElementById("UserLoggedIn").innerText = data.firstName + " - " + data.role;
+					// Not in use for now - need to solve that if an Admin create a User the logged in will change and should not
+					// document.getElementById("UserLoggedIn").innerText = data.firstName + " - " + data.role;
 
 
 				},

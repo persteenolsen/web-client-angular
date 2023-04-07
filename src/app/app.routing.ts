@@ -14,19 +14,22 @@ import { SelectedPostComponent } from './selectedpost';
 import { EditPostComponent } from './editpost';
 import { EditUserComponent } from './edituser';
 
+import { CreateUserComponent } from './createuser';
+
 import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
+import { RegisterUserComponent } from './registeruser';
 import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 	{ path: 'edituser/:id', component: EditUserComponent, canActivate: [AuthGuard] },
 	{ path: 'adminusers', component: AdminUsersComponent, canActivate: [AuthGuard] },
+	{ path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuard] },
     { path: 'adminposts', component: AdminPostsComponent, canActivate: [AuthGuard] },
 	     
     { path: '', component: AboutComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'registeruser', component: RegisterUserComponent },
 	
 	{ path: 'showposts', component: ShowPostsComponent },
 	

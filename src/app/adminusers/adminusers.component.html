@@ -2,7 +2,7 @@
     <div *ngFor="let user of users">
                        
         <div *ngIf="user.id === currentUser.id">
-             <h1>Hi {{user.firstName}} - {{user.role}}</h1> 
+             <h2>Hi {{user.firstName}} - {{user.role}}</h2> 
              
        </div>
       
@@ -11,6 +11,9 @@
 
 <p>As an administrator you are able to edit an delete all the Users !</p>
 <h3>All registered users:</h3>
+
+<a routerLink="/createuser">Create a new User</a>
+	 <br />  <br /> 
 <ul>
     <li *ngFor="let user of users">
                    

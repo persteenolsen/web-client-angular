@@ -12,9 +12,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
+import { RegisterUserComponent } from './registeruser';
 import { AlertComponent } from './_components';
 
+
+import { CreateUserComponent } from './createuser';
 
 import { AdminUsersComponent } from './adminusers';
 
@@ -40,13 +42,14 @@ import { SelectedPostComponent } from './selectedpost';
 		EditUserComponent,
         AboutComponent,
 		AdminUsersComponent,
+		CreateUserComponent,
 		AdminPostsComponent,
 		ShowPostsComponent,
 		CreatePostComponent,
 		EditPostComponent,
 		SelectedPostComponent,
 		LoginComponent,
-        RegisterComponent,
+        RegisterUserComponent,
         AlertComponent
     ],
     providers: [

@@ -5,8 +5,8 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '@/_services';
 
-@Component({ templateUrl: 'register.component.html' })
-export class RegisterComponent implements OnInit {
+@Component({ templateUrl: 'createuser.component.html' })
+export class CreateUserComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
@@ -19,9 +19,9 @@ export class RegisterComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/home']);
-        }
+        //if (this.authenticationService.currentUserValue) {
+        //    this.router.navigate(['/home']);
+        //}
     }
 
     ngOnInit() {
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/adminusers']);
                 },
                 error => {
                     this.alertService.error(error);
