@@ -5,13 +5,13 @@ import { AboutComponent } from './about';
 
 import { AdminUsersComponent } from './adminusers';
 
-import { AdminPostsComponent } from './adminposts';
-import { ShowPostsComponent } from './showposts';
+import { AdminPostsComponent } from './posts/adminposts';
+import { ShowPostsComponent } from './posts/showposts';
 
-import { CreatePostComponent } from './createpost';
-import { SelectedPostComponent } from './selectedpost';
+import { CreatePostComponent } from './posts/createpost';
+import { SelectedPostComponent } from './posts/selectedpost';
 
-import { EditPostComponent } from './editpost';
+import { EditPostComponent } from './posts/editpost';
 import { EditUserComponent } from './edituser';
 import { EditProfileComponent } from './editprofile';
 

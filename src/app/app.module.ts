@@ -20,15 +20,15 @@ import { CreateUserComponent } from './createuser';
 
 import { AdminUsersComponent } from './adminusers';
 
-import { AdminPostsComponent } from './adminposts';
-import { CreatePostComponent } from './createpost';
+import { AdminPostsComponent } from './posts/adminposts';
+import { CreatePostComponent } from './posts/createpost';
 
-import { EditPostComponent } from './editpost';
+import { EditPostComponent } from './posts/editpost';
 import { EditUserComponent } from './edituser';
 import { EditProfileComponent } from './editprofile';
 
-import { ShowPostsComponent } from './showposts';
-import { SelectedPostComponent } from './selectedpost';
+import { ShowPostsComponent } from './posts/showposts';
+import { SelectedPostComponent } from './posts/selectedpost';
 
 @NgModule({
     imports: [
