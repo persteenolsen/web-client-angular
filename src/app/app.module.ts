@@ -25,6 +25,7 @@ import { CreatePostComponent } from './createpost';
 
 import { EditPostComponent } from './editpost';
 import { EditUserComponent } from './edituser';
+import { EditProfileComponent } from './editprofile';
 
 import { ShowPostsComponent } from './showposts';
 import { SelectedPostComponent } from './selectedpost';
@@ -40,6 +41,7 @@ import { SelectedPostComponent } from './selectedpost';
         AppComponent,
         HomeComponent,
 		EditUserComponent,
+		EditProfileComponent,
         AboutComponent,
 		AdminUsersComponent,
 		CreateUserComponent,

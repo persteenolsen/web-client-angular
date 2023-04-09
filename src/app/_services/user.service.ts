@@ -29,12 +29,24 @@ export class UserService {
 	
 	edit(id: number, p: any) {
        
-	   // TEST: The localStorage could be updated with ONLY the edited User values - token must not be updated !!
-	   //this.xUser = JSON.parse(localStorage.getItem('currentUser'));
-	   //alert('User from localStorage: ' + JSON.stringify(this.xUser));
-	   //this.xUser['firstName'] = p.firstname;
-	   //alert('User to localStorage: ' + JSON.stringify(this.xUser));
-	   //localStorage.setItem('currentUser', JSON.stringify(this.xUser));
+	  	   
+	   return this.http.put<apiResult>(`${config.apiUrl}/users/${id}`, p)
+	  		
+      }
+	  
+	  editprofile(id: number, p: any) {
+       
+	   // NOTE: NOT IN USE - ONLY WHEN EDITING OWN PROFILE !
+	   // TEST: The localStorage must be updated with ONLY the edited User values - token must not be updated !!
+	   this.xUser = JSON.parse(localStorage.getItem('currentUser'));
+	  // alert('User from localStorage: ' + JSON.stringify(this.xUser));
+	   this.xUser['title'] = p.title;
+	   this.xUser['firstName'] = p.firstname;
+	   this.xUser['lastName'] = p.lastname;
+	   this.xUser['email'] = p.email;
+	   this.xUser['role'] = p.role;
+	  // alert('User to localStorage: ' + JSON.stringify(this.xUser));
+	   localStorage.setItem('currentUser', JSON.stringify(this.xUser));
 	   
 	   return this.http.put<apiResult>(`${config.apiUrl}/users/${id}`, p)
 	  		

@@ -13,6 +13,7 @@ import { SelectedPostComponent } from './selectedpost';
 
 import { EditPostComponent } from './editpost';
 import { EditUserComponent } from './edituser';
+import { EditProfileComponent } from './editprofile';
 
 import { CreateUserComponent } from './createuser';
 
@@ -23,6 +24,7 @@ import { AuthGuard } from './_helpers';
 const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 	{ path: 'edituser/:id', component: EditUserComponent, canActivate: [AuthGuard] },
+	{ path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard] },
 	{ path: 'adminusers', component: AdminUsersComponent, canActivate: [AuthGuard] },
 	{ path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuard] },
     { path: 'adminposts', component: AdminPostsComponent, canActivate: [AuthGuard] },

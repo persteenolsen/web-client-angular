@@ -5,18 +5,17 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { User } from '@/_models';
-import { UserService, AuthenticationService, AlertService } from '@/_services';
+import { UserService, AlertService } from '@/_services';
 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
 @Component({
-	selector: 'edituser-page',
-	templateUrl: './edituser.component.html'
+	selector: 'editprofile-page',
+	templateUrl: './editprofile.component.html'
 })
 
-export class EditUserComponent implements OnInit {
-    currentUser: User;
+export class EditProfileComponent implements OnInit {
 	
 	registerForm: FormGroup;
 	submitted: any;
@@ -27,9 +26,9 @@ export class EditUserComponent implements OnInit {
 	errorMessage: any;
 
 	// Constructor	
-	constructor(private userService: UserService, private authenticationService: AuthenticationService, private readonly route: ActivatedRoute, private formBuilder: FormBuilder, private alertService: AlertService)
+	constructor(private userService: UserService, private readonly route: ActivatedRoute, private formBuilder: FormBuilder, private alertService: AlertService)
 	{ 
-	    this.currentUser = this.authenticationService.currentUserValue;
+	   
 	}
 
 	// Convenience getter for easy access to form fields in the template and here
@@ -53,7 +52,7 @@ export class EditUserComponent implements OnInit {
 		title: this.registerForm.get('title').value, firstname: this.registerForm.get('firstname').value, 
 		lastname: this.registerForm.get('lastname').value, role: this.registerForm.get('role').value };
 
-		this.userService.edit(this.registerForm.get('iduser').value, b)
+		this.userService.editprofile(this.registerForm.get('iduser').value, b)
 		//this.userService.edit(5, b)
 			.subscribe({
 
@@ -78,13 +77,9 @@ export class EditUserComponent implements OnInit {
 				  				 				 
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 					this.alertService.success('The User was updated successfully with these values: ' + apiResponse, false);
-					
-					
+										
 					// Note: Updating msg at the right corner - The name and role of the User logged in
-					// If an Admin create a User the logged in the msg at the right will not be updated
-					//alert('User logged in ID: ' + this.currentUser.id + ' User edited ID: ' +  this.registerForm.get('iduser').value)
-					if(this.currentUser.id === this.registerForm.get('iduser').value )
-					   document.getElementById("UserLoggedIn").innerText = data.firstName + " - " + data.role;
+				   document.getElementById("UserLoggedIn").innerText = data.firstName + " - " + data.role;
 
 
 				},
