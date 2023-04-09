@@ -15,6 +15,8 @@ export class AppComponent {
         private authenticationService: AuthenticationService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+		
+		//alert('Current User First Name: ' + JSON.stringify(this.currentUser['firstName']));
 
     }
 

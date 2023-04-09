@@ -6,7 +6,8 @@ import { User } from '@/_models';
 @Injectable({ providedIn: 'root' })
 export class UserService {
     
-
+    xUser: User;
+	
     constructor(private http: HttpClient) { 
 			
 	}
@@ -28,7 +29,13 @@ export class UserService {
 	
 	edit(id: number, p: any) {
        
-	  
+	   // TEST: The localStorage could be updated with ONLY the edited User values - token must not be updated !!
+	   //this.xUser = JSON.parse(localStorage.getItem('currentUser'));
+	   //alert('User from localStorage: ' + JSON.stringify(this.xUser));
+	   //this.xUser['firstName'] = p.firstname;
+	   //alert('User to localStorage: ' + JSON.stringify(this.xUser));
+	   //localStorage.setItem('currentUser', JSON.stringify(this.xUser));
+	   
 	   return this.http.put<apiResult>(`${config.apiUrl}/users/${id}`, p)
 	  		
       }
