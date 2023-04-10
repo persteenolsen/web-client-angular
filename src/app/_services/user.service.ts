@@ -36,8 +36,7 @@ export class UserService {
 	  
 	  editprofile(id: number, p: any) {
        
-	   // NOTE: NOT IN USE - ONLY WHEN EDITING OWN PROFILE !
-	   // TEST: The localStorage must be updated with ONLY the edited User values - token must not be updated !!
+	   // The localStorage must be updated with ONLY the edited User values - token must not be updated !!
 	   this.xUser = JSON.parse(localStorage.getItem('currentUser'));
 	  // alert('User from localStorage: ' + JSON.stringify(this.xUser));
 	   this.xUser['title'] = p.title;

@@ -3,7 +3,7 @@
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
-import { AdminUsersComponent } from './adminusers';
+import { AdminUsersComponent } from './users/adminusers';
 
 import { AdminPostsComponent } from './posts/adminposts';
 import { ShowPostsComponent } from './posts/showposts';
@@ -12,13 +12,13 @@ import { CreatePostComponent } from './posts/createpost';
 import { SelectedPostComponent } from './posts/selectedpost';
 
 import { EditPostComponent } from './posts/editpost';
-import { EditUserComponent } from './edituser';
-import { EditProfileComponent } from './editprofile';
+import { EditUserComponent } from './users/edituser';
+import { EditProfileComponent } from './users/editprofile';
 
-import { CreateUserComponent } from './createuser';
+import { CreateUserComponent } from './users/createuser';
 
-import { LoginComponent } from './login';
-import { RegisterUserComponent } from './registeruser';
+import { LoginComponent } from './account/login';
+import { RegisterUserComponent } from './account/registeruser';
 import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
