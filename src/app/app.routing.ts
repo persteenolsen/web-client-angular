@@ -28,18 +28,18 @@ const routes: Routes = [
 	{ path: 'adminusers', component: AdminUsersComponent, canActivate: [AuthGuard] },
 	{ path: 'createuser', component: CreateUserComponent, canActivate: [AuthGuard] },
     { path: 'adminposts', component: AdminPostsComponent, canActivate: [AuthGuard] },
-	     
+	
+	{ path: 'editpost/:id', component: EditPostComponent, canActivate: [AuthGuard] },
+	{ path: 'thepost/:id', component: SelectedPostComponent, canActivate: [AuthGuard] },
+    { path: 'createpost', component: CreatePostComponent, canActivate: [AuthGuard] },
+	
     { path: '', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'registeruser', component: RegisterUserComponent },
 	
 	{ path: 'showposts', component: ShowPostsComponent },
 	
-	{ path: 'editpost/:id', component: EditPostComponent },
-	{ path: 'thepost/:id', component: SelectedPostComponent },
-    { path: 'createpost', component: CreatePostComponent },
-
-    // otherwise redirect to home
+	// otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
 
