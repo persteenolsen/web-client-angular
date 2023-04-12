@@ -1,47 +1,44 @@
-
 <h3 class="p-3 text-center">The results of Web API GET requests from a DB</h3>
 
-    
- <br /><br />
+
+<br /><br />
 
 
 <div class="table-responsive">
-	 
-	 <a routerLink="/createpost">Create a new Post</a>
-	 <br /> <br />
-	
-	 <div *ngIf="errorMessage != null">
-	      <div style='color: red'>{{errorMessage}}</div>
-	 </div>
-	 <div *ngIf="errorMessage == null">
-	 
-	    <table id="myTable" class="table table-striped">
-             <thead>
-                <tr>
-                   <th style="width: '10%'">Id</th>
-				   <th style="width: '10%'"></th>
-				   
-		    	   <th style="width: '40%'">Title ( GET )</th>
-				   
-				   <th style="width: '40%'">Body ( PUT )</th>
-                </tr>
-             </thead>
-             <tbody>
-		   
-		      <tr *ngFor="let post of listOfPosts">
-		          <td>{{post.id}}</td>
-				  <td><button type=button class="btn btn-danger" (click)="deletePost(post.id)" >Delete</button></td>
-				  
-			      <td><a routerLink="/thepost/{{post.id}}">{{post.title}}</a></td>
-				  <td><a routerLink="/editpost/{{post.id}}">{{post.body}}</a></td>
-				 
-				   
-		       </tr>
-		    </tbody>
-		 
-	     </table>
-	  </div>
-    
-</div>
 
-            			 
+	<a routerLink="/createpost">Create a new Post</a>
+	<br /> <br />
+
+	<div *ngIf="errorMessage != null">
+		<div style='color: red'>{{errorMessage}}</div>
+	</div>
+	<div *ngIf="errorMessage == null">
+
+		<table id="myTable" class="table table-striped">
+			<thead>
+				<tr>
+					<th style="width: '10%'">Id</th>
+					<th style="width: '10%'"></th>
+
+					<th style="width: '40%'">Title ( GET )</th>
+
+					<th style="width: '40%'">Body ( PUT )</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr *ngFor="let post of listOfPosts">
+					<td>{{post.id}}</td>
+					<td><button type=button class="btn btn-danger" (click)="deletePost(post.id)">Delete</button></td>
+
+					<td><a routerLink="/thepost/{{post.id}}">{{post.title}}</a></td>
+					<td><a routerLink="/editpost/{{post.id}}">{{post.body}}</a></td>
+
+
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+</div>

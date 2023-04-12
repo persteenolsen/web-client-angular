@@ -1,35 +1,34 @@
-﻿
-    <div *ngFor="let user of users">
-                       
-        <div *ngIf="user.id === currentUser.id">
-             <h2>Hi {{user.firstName}} - {{user.role}}</h2> 
-             
-       </div>
-      
+﻿<div *ngFor="let user of users">
+
+    <div *ngIf="user.id === currentUser.id">
+        <h2>Hi {{user.firstName}} - {{user.role}}</h2>
+
     </div>
+
+</div>
 
 
 <p>As an administrator you are able to edit an delete all the Users !</p>
 <h3>All registered users:</h3>
 
 <a routerLink="/createuser">Create a new User</a>
-	 <br />  <br /> 
+<br /> <br />
 <ul>
     <li *ngFor="let user of users">
-             
-			  <div *ngIf="user.id === currentUser.id">
-                 
-				  {{user.email}} - {{user.firstName}} {{user.lastName}} 
-             - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-			 - <a routerLink="/editprofile/{{user.id}}">Edit</a>
-             
-              </div>
-             
-              <div *ngIf="user.id != currentUser.id">			 
-             {{user.email}} - {{user.firstName}} {{user.lastName}} 
-             - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-			 - <a routerLink="/edituser/{{user.id}}">Edit</a>
-            </div>
-              
+
+        <div *ngIf="user.id === currentUser.id">
+
+            {{user.email}} - {{user.firstName}} {{user.lastName}}
+            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+            - <a routerLink="/editprofile/{{user.id}}">Edit</a>
+
+        </div>
+
+        <div *ngIf="user.id != currentUser.id">
+            {{user.email}} - {{user.firstName}} {{user.lastName}}
+            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+            - <a routerLink="/edituser/{{user.id}}">Edit</a>
+        </div>
+
     </li>
 </ul>

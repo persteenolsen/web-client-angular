@@ -40,17 +40,17 @@ import { SelectedPostComponent } from './posts/selectedpost';
     declarations: [
         AppComponent,
         HomeComponent,
-		EditUserComponent,
-		EditProfileComponent,
+        EditUserComponent,
+        EditProfileComponent,
         AboutComponent,
-		AdminUsersComponent,
-		CreateUserComponent,
-		AdminPostsComponent,
-		ShowPostsComponent,
-		CreatePostComponent,
-		EditPostComponent,
-		SelectedPostComponent,
-		LoginComponent,
+        AdminUsersComponent,
+        CreateUserComponent,
+        AdminPostsComponent,
+        ShowPostsComponent,
+        CreatePostComponent,
+        EditPostComponent,
+        SelectedPostComponent,
+        LoginComponent,
         RegisterUserComponent,
         AlertComponent
     ],
@@ -59,7 +59,7 @@ import { SelectedPostComponent } from './posts/selectedpost';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
-       // fakeBackendProvider
+        // fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

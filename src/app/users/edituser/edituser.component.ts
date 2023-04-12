@@ -16,8 +16,8 @@ import { first } from "rxjs/operators";
 })
 
 export class EditUserComponent implements OnInit {
-    currentUser: User;
-	
+	currentUser: User;
+
 	registerForm: FormGroup;
 	submitted: any;
 	//loading = false;
@@ -27,9 +27,8 @@ export class EditUserComponent implements OnInit {
 	errorMessage: any;
 
 	// Constructor	
-	constructor(private userService: UserService, private authenticationService: AuthenticationService, private readonly route: ActivatedRoute, private formBuilder: FormBuilder, private alertService: AlertService)
-	{ 
-	    this.currentUser = this.authenticationService.currentUserValue;
+	constructor(private userService: UserService, private authenticationService: AuthenticationService, private readonly route: ActivatedRoute, private formBuilder: FormBuilder, private alertService: AlertService) {
+		this.currentUser = this.authenticationService.currentUserValue;
 	}
 
 	// Convenience getter for easy access to form fields in the template and here
@@ -49,42 +48,44 @@ export class EditUserComponent implements OnInit {
 
 		// this.loading = true;
 
-		const b = { email: this.registerForm.get('email').value, password: this.registerForm.get('password').value, 
-		title: this.registerForm.get('title').value, firstname: this.registerForm.get('firstname').value, 
-		lastname: this.registerForm.get('lastname').value, role: this.registerForm.get('role').value };
+		const b = {
+			email: this.registerForm.get('email').value, password: this.registerForm.get('password').value,
+			title: this.registerForm.get('title').value, firstname: this.registerForm.get('firstname').value,
+			lastname: this.registerForm.get('lastname').value, role: this.registerForm.get('role').value
+		};
 
 		this.userService.edit(this.registerForm.get('iduser').value, b)
-		//this.userService.edit(5, b)
+			//this.userService.edit(5, b)
 			.subscribe({
 
 				next: data => {
 
 					// Not really needed :-)
 					//this.userId = data.id;
-                  
-				// Note: Only status 200 is returned
-				// Setting the GUI with the value returned from the Web API
-				// Id is not returned from the Web API which is fine :-)
-				//	this.f.iduser.setValue(data.id);
-				//	this.f.email.setValue('Email from Web API: ' + data.email);
-				//  this.f.password.setValue('Password from Web API: ' + data.Password);
-				//	this.f.title.setValue('Title from Web API: ' + data.title);
-				//	this.f.firstname.setValue('Firstname from Web API: ' + data.firstName);
-				//	this.f.lastname.setValue('Lastname Web API: ' + data.lastName);
-				//	this.f.lastname.setValue('Role from Web API: ' + data.role);
 
-                    var apiResponse = "Title: " + data.title + " Firstname: " + data.firstName + " LastName: " + data.lastName + 
-					" Email: " + data.email + " Role: " + data.role;
-				  				 				 
+					// Note: Only status 200 is returned
+					// Setting the GUI with the value returned from the Web API
+					// Id is not returned from the Web API which is fine :-)
+					//	this.f.iduser.setValue(data.id);
+					//	this.f.email.setValue('Email from Web API: ' + data.email);
+					//  this.f.password.setValue('Password from Web API: ' + data.Password);
+					//	this.f.title.setValue('Title from Web API: ' + data.title);
+					//	this.f.firstname.setValue('Firstname from Web API: ' + data.firstName);
+					//	this.f.lastname.setValue('Lastname Web API: ' + data.lastName);
+					//	this.f.lastname.setValue('Role from Web API: ' + data.role);
+
+					var apiResponse = "Title: " + data.title + " Firstname: " + data.firstName + " LastName: " + data.lastName +
+						" Email: " + data.email + " Role: " + data.role;
+
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 					this.alertService.success('The User was updated successfully with these values: ' + apiResponse, false);
-					
-					
+
+
 					// Note: Updating msg at the right corner - The name and role of the User logged in
 					// If an Admin create a User the logged in the msg at the right will not be updated
 					//alert('User logged in ID: ' + this.currentUser.id + ' User edited ID: ' +  this.registerForm.get('iduser').value)
-					if(this.currentUser.id === this.registerForm.get('iduser').value )
-					   document.getElementById("UserLoggedIn").innerText = data.firstName + " - " + data.role;
+					if (this.currentUser.id === this.registerForm.get('iduser').value)
+						document.getElementById("UserLoggedIn").innerText = data.firstName + " - " + data.role;
 
 
 				},
@@ -111,7 +112,7 @@ export class EditUserComponent implements OnInit {
 			firstname: ['', Validators.required],
 			lastname: ['', Validators.required],
 			email: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
+			password: ['', [Validators.required, Validators.minLength(6)]],
 			role: ['', Validators.required]
 
 		});
@@ -130,7 +131,7 @@ export class EditUserComponent implements OnInit {
 				//this.userId = data.id;
 
 				// Setting the form input initial values received from the Web API
-                // Note: The data.id, data.firstName and data.lastName matches the properties in the Web API User Model / DB				
+				// Note: The data.id, data.firstName and data.lastName matches the properties in the Web API User Model / DB				
 				this.f.iduser.setValue(data.id);
 				this.f.title.setValue(data.title);
 				this.f.email.setValue(data.email);
