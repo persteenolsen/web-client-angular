@@ -52,12 +52,17 @@ export class EditProfileComponent implements OnInit {
 			title: this.registerForm.get('title').value, firstname: this.registerForm.get('firstname').value,
 			lastname: this.registerForm.get('lastname').value, role: this.registerForm.get('role').value
 		};
-
+        
+		// The async operation starts here
+		// Note: Rxjs take care of the asyncronic operation (http call to web api) like promises, async/await or axios but have more functions / operators
 		this.userService.editprofile(this.registerForm.get('iduser').value, b)
-			//this.userService.edit(5, b)
-			.subscribe({
+			
+			// The pipe / first is not really needed here but fine for demo
+			.pipe(first())
+			
+			.subscribe(
 
-				next: data => {
+				  data => {
 
 					// Not really needed :-)
 					//this.userId = data.id;
@@ -84,7 +89,7 @@ export class EditProfileComponent implements OnInit {
 
 
 				},
-				error: error => {
+				error => {
 
 					console.error('There were input errors ! ', error);
 
@@ -92,7 +97,7 @@ export class EditProfileComponent implements OnInit {
 
 					// this.loading = false;
 				}
-			});
+			);
 
 	}
 
@@ -117,10 +122,16 @@ export class EditProfileComponent implements OnInit {
 
 		// Getting the selected User ( for exampe: users/3 ) from the url matching the route defined in the route-module: edituser:id 
 		this.idParam = this.route.snapshot.paramMap.get("id");
-
-		this.userService.getUser(this.idParam).subscribe({
-
-			next: data => {
+        
+		// The async operation starts here
+		// Note: Rxjs take care of the asyncronic operation (http call to web api) like promises, async/await or axios but have more functions / operators
+		this.userService.getUser(this.idParam)
+		
+		 // The pipe / first is not really needed here but fine for demo
+		.pipe(first())
+		.subscribe(
+		
+			 data => {
 
 				// Not really needed :-)
 				//this.userId = data.id;
@@ -139,14 +150,14 @@ export class EditProfileComponent implements OnInit {
 				this.alertService.success('The User is ready for editing...', false);
 
 			},
-			error: error => {
+			error => {
 
 				// this.errorMessage = error.message;
 				console.error('There may be one or more input values with wrong format ! ', error);
 
 				this.alertService.error('There may be one or more values with wrong format or no connection to the API ! ' + error);
 			}
-		})
+		)
 
 	}
 }

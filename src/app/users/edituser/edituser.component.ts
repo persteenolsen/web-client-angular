@@ -54,11 +54,15 @@ export class EditUserComponent implements OnInit {
 			lastname: this.registerForm.get('lastname').value, role: this.registerForm.get('role').value
 		};
 
+		// The async operation starts here
+		// Note: Rxjs take care of the asyncronic operation (http call to web api) like promises, async/await or axios but have more functions / operators
 		this.userService.edit(this.registerForm.get('iduser').value, b)
-			//this.userService.edit(5, b)
-			.subscribe({
+			
+			 // The pipe / first is not really needed here but fine for demo
+			.pipe(first())
+			.subscribe(
 
-				next: data => {
+			data => {
 
 					// Not really needed :-)
 					//this.userId = data.id;
@@ -80,7 +84,6 @@ export class EditUserComponent implements OnInit {
 					// Success Alert which will close by use another route "false" / "true" will keep the alert box on screen
 					this.alertService.success('The User was updated successfully with these values: ' + apiResponse, false);
 
-
 					// Note: Updating msg at the right corner - The name and role of the User logged in
 					// If an Admin create a User the logged in the msg at the right will not be updated
 					//alert('User logged in ID: ' + this.currentUser.id + ' User edited ID: ' +  this.registerForm.get('iduser').value)
@@ -89,16 +92,15 @@ export class EditUserComponent implements OnInit {
 
 
 				},
-				error: error => {
+				error => {
 
-					console.error('There were input errors ! ', error);
+					     console.error('There were input errors ! ', error);
+					     this.alertService.error('You submited one or more input values with wrong format or no connection to the API: ' + error);
 
-					this.alertService.error('You submited one or more input values with wrong format or no connection to the API: ' + error);
-
-					// this.loading = false;
+					   // this.loading = false;
 				}
-			});
-
+			);
+			
 	}
 
 
@@ -122,10 +124,16 @@ export class EditUserComponent implements OnInit {
 
 		// Getting the selected User ( for exampe: users/3 ) from the url matching the route defined in the route-module: edituser:id 
 		this.idParam = this.route.snapshot.paramMap.get("id");
+        
+		// The async operation starts here
+		// Note: Rxjs take care of the asyncronic operation (http call to web api) like promises, async/await or axios but have more functions / operators
+		this.userService.getUser(this.idParam)
+					
+		 // The pipe / first is not really needed here but fine for demo
+		.pipe(first())
+		.subscribe(
 
-		this.userService.getUser(this.idParam).subscribe({
-
-			next: data => {
+			data => {
 
 				// Not really needed :-)
 				//this.userId = data.id;
@@ -144,14 +152,14 @@ export class EditUserComponent implements OnInit {
 				this.alertService.success('The User is ready for editing...', false);
 
 			},
-			error: error => {
+			error => {
 
 				// this.errorMessage = error.message;
 				console.error('There may be one or more input values with wrong format ! ', error);
 
 				this.alertService.error('There may be one or more values with wrong format or no connection to the API ! ' + error);
 			}
-		})
+		)
 
 	}
 }
