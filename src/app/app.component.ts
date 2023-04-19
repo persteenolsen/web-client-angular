@@ -16,8 +16,12 @@ export class AppComponent {
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 		
-		//alert('Current User First Name: ' + JSON.stringify(this.currentUser['firstName']));
-
+		// TEST - Is called on initial loa an browser refresh
+		/*if( this.currentUser )
+		    alert('Current User First Name: ' + JSON.stringify(this.currentUser['firstName']));
+        else
+		    alert('No Current User is logged in !');
+		*/
     }
 
     logout() {
