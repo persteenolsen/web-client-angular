@@ -95,7 +95,7 @@ export class EditUserComponent implements OnInit {
 				error => {
 
 					     console.error('There were input errors ! ', error);
-					     this.alertService.error('You submited one or more input values with wrong format or no connection to the API: ' + error);
+					     this.alertService.error( error  );
 
 					   // this.loading = false;
 				}
@@ -124,7 +124,7 @@ export class EditUserComponent implements OnInit {
 
 		// Getting the selected User ( for exampe: users/3 ) from the url matching the route defined in the route-module: edituser:id 
 		this.idParam = this.route.snapshot.paramMap.get("id");
-        
+		
 		// The async operation starts here
 		// Note: Rxjs take care of the asyncronic operation (http call to web api) like promises, async/await or axios but have more functions / operators
 		this.userService.getUser(this.idParam)
@@ -154,10 +154,10 @@ export class EditUserComponent implements OnInit {
 			},
 			error => {
 
-				// this.errorMessage = error.message;
-				console.error('There may be one or more input values with wrong format ! ', error);
+				
+				console.error('There were input errors ! ', error);
 
-				this.alertService.error('There may be one or more values with wrong format or no connection to the API ! ' + error);
+				this.alertService.error( error );
 			}
 		)
 

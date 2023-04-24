@@ -68,9 +68,12 @@ export class EditPostComponent implements OnInit {
 				},
 				error: error => {
 
-					console.error('There were input errors ! ', error);
-
-					this.alertService.error('You submited one or more input values with wrong format or no connection to the API: ' + error);
+					console.error('There were errors ! ', error);
+                    
+					// Note: Make the Error message readable
+					const errorMsg = JSON.stringify(error);
+										
+					this.alertService.error( errorMsg );
 
 					// this.loading = false;
 				}
@@ -114,10 +117,11 @@ export class EditPostComponent implements OnInit {
 			},
 			error: error => {
 
-				// this.errorMessage = error.message;
-				console.error('There may be one or more input values with wrong format ! ', error);
-
-				this.alertService.error('There may be one or more values with wrong format or no connection to the API ! ' + error);
+								
+				// Note: Make the Error message readable
+				const errorMsg = JSON.stringify(error);
+										
+				this.alertService.error( errorMsg );
 			}
 		})
 
