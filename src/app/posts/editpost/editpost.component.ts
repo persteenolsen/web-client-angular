@@ -69,13 +69,35 @@ export class EditPostComponent implements OnInit {
 				error: error => {
 
 					console.error('There were errors ! ', error);
-                    
-					// Note: Make the Error message readable
-					const errorMsg = JSON.stringify(error);
-										
-					this.alertService.error( errorMsg );
 
-					// this.loading = false;
+					// The errors will most likely be a bad request 400 in one of there forms:
+					// 1) Model Annotation - validation
+					// 2) A message like email is alereay take
+					// There could also be a message 404 in terms of no api connection					
+					var errorMsg = JSON.stringify(error);
+
+					// Looking for a 400 http bad request - Model Annotation - validation
+					if (errorMsg.indexOf('[') > 0 && errorMsg.indexOf(']') > 0) {
+
+						// Removing the {} and []
+						if (errorMsg.length > 1) {
+
+							// Removing the {}
+							errorMsg = errorMsg.substring(1, (errorMsg.length - 1));
+
+							// Removing all the []
+							// Note: The error messages at the Moel must not contain "," 
+							var errArray = errorMsg.split(',');
+							for (let i = 0; i < errArray.length; i++) {
+								errorMsg = errorMsg.replace('[', '');
+								errorMsg = errorMsg.replace(']', '');
+							}
+
+						}
+					}
+
+					this.alertService.error(errorMsg);
+
 				}
 			});
 
@@ -117,11 +139,11 @@ export class EditPostComponent implements OnInit {
 			},
 			error: error => {
 
-								
+
 				// Note: Make the Error message readable
 				const errorMsg = JSON.stringify(error);
-										
-				this.alertService.error( errorMsg );
+
+				this.alertService.error(errorMsg);
 			}
 		})
 
