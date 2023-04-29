@@ -3,6 +3,8 @@
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
+import { CounterComponent } from './counter';
+
 import { AdminUsersComponent } from './users/adminusers';
 
 import { AdminPostsComponent } from './posts/adminposts';
@@ -34,10 +36,12 @@ const routes: Routes = [
 	{ path: 'createpost', component: CreatePostComponent, canActivate: [AuthGuard] },
 
 	{ path: '', component: AboutComponent },
+	
 	{ path: 'login', component: LoginComponent },
 	{ path: 'registeruser', component: RegisterUserComponent },
 
 	{ path: 'showposts', component: ShowPostsComponent },
+	{ path: 'counter', component: CounterComponent },
 
 	// otherwise redirect to home
 	{ path: '**', redirectTo: '' }

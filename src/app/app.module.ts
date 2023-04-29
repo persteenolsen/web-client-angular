@@ -11,6 +11,9 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
+
+import { CounterComponent } from './counter';
+
 import { LoginComponent } from './account/login';
 import { RegisterUserComponent } from './account/registeruser';
 import { AlertComponent } from './_components';
@@ -27,8 +30,9 @@ import { EditPostComponent } from './posts/editpost';
 import { EditUserComponent } from './users/edituser';
 import { EditProfileComponent } from './users/editprofile';
 
-import { ShowPostsComponent } from './posts/showposts';
 import { SelectedPostComponent } from './posts/selectedpost';
+import { ShowPostsComponent } from './posts/showposts';
+
 
 @NgModule({
     imports: [
@@ -52,7 +56,8 @@ import { SelectedPostComponent } from './posts/selectedpost';
         SelectedPostComponent,
         LoginComponent,
         RegisterUserComponent,
-        AlertComponent
+        AlertComponent,
+		CounterComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
